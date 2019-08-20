@@ -11,7 +11,7 @@
       <h3 class="title">Welcome! &nbsp;Pokemon World</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <svg-icon icon-class="icons8-pokemon" />
+          <svg-icon :class="rotate_user" icon-class="icons8-pokemon" />
         </span>
         <el-input
           name="username"
@@ -19,11 +19,13 @@
           v-model="loginForm.username"
           autocomplete="on"
           placeholder="请输入帐号"
+          @focus="start_user()"
+          @blur="end_user()"
         />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container svg-container_login">
-          <svg-icon icon-class="Pokemon"></svg-icon>
+          <svg-icon :class="rotate_pass" icon-class="Pokemon"></svg-icon>
         </span>
         <el-input
           name="password"
@@ -32,8 +34,10 @@
           v-model="loginForm.password"
           autocomplete="on"
           placeholder="请输入密码"
+          @focus="start_pass()"
+          @blur="end_pass()"
         ></el-input>
-        <span class="show-pwd" @click="showPwd">
+        <span @click="showPwd" class="show-pwd">
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
@@ -65,8 +69,10 @@ export default {
         password: '111111'
       },
       loginRules: {},
+      pwdType: 'password',
       loading: false,
-      pwdType: 'password'
+      rotate_user: '',
+      rotate_pass: ''
     };
   },
   methods: {
@@ -76,6 +82,18 @@ export default {
       } else {
         this.pwdType = 'password';
       }
+    },
+    start_user() {
+      this.rotate_user = 'rotate';
+    },
+    end_user() {
+      this.rotate_user = '';
+    },
+    start_pass() {
+      this.rotate_pass = 'rotate';
+    },
+    end_pass() {
+      this.rotate_pass = '';
     }
   }
 };
@@ -128,6 +146,14 @@ $deep: #e3350d;
 <style lang="scss" scoped>
 $simple: #ee6b2e;
 $deep: #e3350d;
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .login-container {
   position: fixed;
   height: 100%;
@@ -163,6 +189,9 @@ $deep: #e3350d;
     display: inline-block;
     &_login {
       font-size: 18px;
+      .rotate {
+        animation: rotate 1s linear infinite;
+      }
     }
   }
   .title {
