@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>测试</span>
+    <span>测试22</span>
   </div>
 </template>
 <script>
