@@ -8,10 +8,10 @@
       ref="loginForm"
       label-position="left"
     >
-      <h3 class="title">Welcome! &nbsp;Pokemon World</h3>
+      <h3 class="title animated pulse infinite">Welcome! &nbsp;Pokemon World</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <svg-icon :class="rotate_user" icon-class="icons8-pokemon" />
+          <svg-icon icon-class="icons8-pokemon" />
         </span>
         <el-input
           name="username"
@@ -19,8 +19,6 @@
           v-model="loginForm.username"
           autocomplete="on"
           placeholder="请输入帐号"
-          @focus="start_user()"
-          @blur="end_user()"
         />
       </el-form-item>
       <el-form-item prop="password">
@@ -71,7 +69,6 @@ export default {
       loginRules: {},
       pwdType: 'password',
       loading: false,
-      rotate_user: '',
       rotate_pass: ''
     };
   },
@@ -83,11 +80,28 @@ export default {
         this.pwdType = 'password';
       }
     },
-    start_user() {
-      this.rotate_user = 'rotate';
-    },
-    end_user() {
-      this.rotate_user = '';
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.$router.push({ path: '/' });
+        }
+        // 权限后面写
+        // if (valid) {
+        //   this.loading = true;
+        //   this.$store
+        //     .dispatch('Login', this.loginForm)
+        //     .then(() => {
+        //       this.loading = false;
+        //       this.$router.push({ path: '/' });
+        //     })
+        //     .catch(() => {
+        //       this.loading = false;
+        //     });
+        // } else {
+        //   console.log('error submit!');
+        //   return false;
+        // }
+      });
     },
     start_pass() {
       this.rotate_pass = 'rotate';
