@@ -1,0 +1,43 @@
+<template>
+  <div class="dashboard-container">
+    <div class="dashboard-text">通用后台</div>
+  </div>
+</template>
+
+<script>
+// import { mapGetters } from "vuex";
+
+export default {
+  name: "dashboard",
+  computed: {
+    // ...mapGetters(["name", "roles"])
+  },
+  created() {
+    // console.log(this.$store.getters.module_name); 拿到该后台的模板名称
+    // switch (this.$store.getters.module_name) {
+    //   case "cool": // 是该项目页面的话重定向到改项目
+    //     this.$router.push({
+    //       path: `/app/${this.$store.getters.app_id}/ec/main/desk`
+    //     });
+    //     break;
+    //   default:
+    //     break;
+    // }
+    // this.$router.push({
+    //   path: "/app/app_id/cool/main"
+    // });
+  }
+};
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.dashboard {
+  &-container {
+    margin: 30px;
+  }
+  &-text {
+    font-size: 30px;
+    line-height: 46px;
+  }
+}
+</style>

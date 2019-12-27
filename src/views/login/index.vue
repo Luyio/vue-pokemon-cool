@@ -8,7 +8,9 @@
       ref="loginForm"
       label-position="left"
     >
-      <h3 class="title animated pulse infinite">Welcome! &nbsp;Pokemon World</h3>
+      <h3 class="title animated pulse infinite">
+        Welcome! &nbsp;Pokemon World
+      </h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="icons8-pokemon" />
@@ -46,7 +48,8 @@
           style="width:100%;"
           :loading="loading"
           @click.native.prevent="handleLogin"
-        >Go ~</el-button>
+          >Go ~</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
@@ -59,31 +62,31 @@
 // import Vue from 'vue';
 
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
       loginForm: {
-        username: '皮卡丘',
-        password: '111111'
+        username: "皮卡丘",
+        password: "111111"
       },
       loginRules: {},
-      pwdType: 'password',
+      pwdType: "password",
       loading: false,
-      rotate_pass: ''
+      rotate_pass: ""
     };
   },
   methods: {
     showPwd() {
-      if (this.pwdType === 'password') {
-        this.pwdType = '';
+      if (this.pwdType === "password") {
+        this.pwdType = "";
       } else {
-        this.pwdType = 'password';
+        this.pwdType = "password";
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$router.push({ path: '/' });
+          this.$router.push({ path: "/" });
         }
         // 权限后面写
         // if (valid) {
@@ -104,10 +107,10 @@ export default {
       });
     },
     start_pass() {
-      this.rotate_pass = 'rotate';
+      this.rotate_pass = "rotate";
     },
     end_pass() {
-      this.rotate_pass = '';
+      this.rotate_pass = "";
     }
   }
 };
@@ -174,8 +177,8 @@ $deep: #e3350d;
   width: 100%;
   background-color: rgb(26, 22, 45);
   // background: url('../../assets/ball.png');
-  background-size: 'cover';
-  background-repeat: 'no-repeat';
+  background-size: "cover";
+  background-repeat: "no-repeat";
   opacity: 0.85;
   .login-form {
     position: absolute;
