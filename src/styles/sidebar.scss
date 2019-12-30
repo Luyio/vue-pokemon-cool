@@ -1,0 +1,54 @@
+#app {
+
+    // 主体区域
+    .main-container {
+        min-height: 100%;
+        transition: margin-left 0.28s;
+        margin-left: 180px;
+    }
+
+    // 侧边栏
+    .sidebar {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 70px;
+        bottom: 0;
+        overflow-y: scroll;
+    }
+
+    .sidebar::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .sidebar-el-menu:not(.el-menu--collapse) {
+        width: 200px;
+        border: none;
+    }
+
+    .sidebar>ul {
+        height: 100%;
+    }
+
+    .sidebar ul li i {
+        margin-right: 16px;
+        color: rgb(191, 203, 217);
+    }
+
+    .sidebar ul li span {
+        font-size: 14px;
+    }
+
+    .content {
+        width: auto;
+        height: 100%;
+        padding: 10px;
+        overflow-y: scroll;
+        box-sizing: border-box;
+    }
+
+    .content-collapse {
+        left: 65px;
+    }
+
+}

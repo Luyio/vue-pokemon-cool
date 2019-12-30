@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="collapse-btn">
-      <span class="svg-Navbar ">
+      <span @click="collapseChage()" class="svg-Navbar ">
         <svg-icon icon-class="pokemonball" />
       </span>
     </div>
@@ -58,10 +58,12 @@
   </div>
 </template>
 <script>
+import bus from "./bus";
 export default {
   components: {},
   data() {
     return {
+      collapse: false,
       fullscreen: false,
       message: 999,
       name: "艺爸爸"
@@ -95,7 +97,12 @@ export default {
       this.fullscreen = !this.fullscreen;
     },
     // 下拉菜单
-    handleCommand() {}
+    handleCommand() {},
+    // 侧边栏折叠
+    collapseChage() {
+      this.collapse = !this.collapse;
+      bus.$emit("collapse", this.collapse);
+    }
   }
 };
 </script>
