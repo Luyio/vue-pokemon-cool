@@ -1,8 +1,11 @@
 <template>
   <div class="header">
-    <div class="collapse-btn">
-      <span @click="collapseChage()" class="svg-Navbar ">
-        <svg-icon icon-class="pokemonball" />
+    <div @click="collapseChage()" class="collapse-btn">
+      <span class="'svg-Navbar' ">
+        <svg-icon
+          icon-class="pokemonball"
+          :class="[collapse ? 'svg-Navbar' : 'svg-Navbar svg_active']"
+        />
       </span>
     </div>
     <div class="logo">侯斐 is my sun</div>
@@ -127,6 +130,12 @@ export default {
   line-height: 70px;
 }
 .header .svg-Navbar {
+  position: relative;
+  color: goldenrod;
+  transition: 0.3s;
+}
+.svg_active {
+  transform: rotate(90deg);
   color: goldenrod;
 }
 .header_R {

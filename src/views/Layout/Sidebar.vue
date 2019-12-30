@@ -94,6 +94,16 @@ export default {
               title: "文件上传"
             }
           ]
+        },
+        {
+          icon: "el-icon-chicken",
+          index: "table",
+          title: "houfei我儿"
+        },
+        {
+          icon: "el-icon-sugar",
+          index: "table",
+          title: "houfei我儿"
         }
       ]
     };
