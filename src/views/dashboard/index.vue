@@ -14,18 +14,15 @@ export default {
   },
   created() {
     // console.log(this.$store.getters.module_name); 拿到该后台的模板名称
-    // switch (this.$store.getters.module_name) {
-    //   case "cool": // 是该项目页面的话重定向到改项目
-    //     this.$router.push({
-    //       path: `/app/${this.$store.getters.app_id}/ec/main/desk`
-    //     });
-    //     break;
-    //   default:
-    //     break;
-    // }
-    this.$router.push({
-      path: "/app/app_id/cool/main"
-    });
+    switch (this.$store.getters.module_name) {
+      case "cool": // 是该项目页面的话重定向到改项目
+        this.$router.push({
+          path: "/app_id/cool/main"
+        });
+        break;
+      default:
+        break;
+    }
   }
 };
 </script>

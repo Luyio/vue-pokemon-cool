@@ -59,7 +59,9 @@
               ></el-dropdown-item
             >
             <el-dropdown-item>侯妃莴笋</el-dropdown-item>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item divided command="loginout"
+              >退出登录</el-dropdown-item
+            >
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -106,7 +108,12 @@ export default {
       this.fullscreen = !this.fullscreen;
     },
     // 下拉菜单
-    handleCommand() {},
+    handleCommand(command) {
+      if (command == "loginout") {
+        localStorage.removeItem("ms_username");
+        this.$router.push("/login");
+      }
+    },
     // 侧边栏折叠
     collapseChage() {
       this.collapse = !this.collapse;
