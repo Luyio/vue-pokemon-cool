@@ -8,7 +8,7 @@
         />
       </span>
     </div>
-    <div class="logo">侯斐 is my sun</div>
+    <div class="logo">HF is my sun</div>
     <div class="header_R">
       <div class="header_user">
         <!-- 全屏 -->
@@ -51,7 +51,13 @@
             <i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>侯妃窝儿</el-dropdown-item>
+            <el-dropdown-item
+              ><a
+                href="https://github.com/Luyio/vue-pokemon-cool"
+                target="_blank"
+                >HF窝儿</a
+              ></el-dropdown-item
+            >
             <el-dropdown-item>侯妃莴笋</el-dropdown-item>
             <el-dropdown-item divided>退出登录</el-dropdown-item>
           </el-dropdown-menu>
@@ -69,7 +75,7 @@ export default {
       collapse: false,
       fullscreen: false,
       message: 999,
-      name: "艺爸爸"
+      name: "Y baba"
     };
   },
   methods: {

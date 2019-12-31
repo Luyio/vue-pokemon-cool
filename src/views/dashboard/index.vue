@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">通用后台</div>
+    <div class="dashboard-text">hhh</div>
   </div>
 </template>
 
@@ -23,9 +23,9 @@ export default {
     //   default:
     //     break;
     // }
-    // this.$router.push({
-    //   path: "/app/app_id/cool/main"
-    // });
+    this.$router.push({
+      path: "/app/app_id/cool/main"
+    });
   }
 };
 </script>
@@ -37,7 +37,7 @@ export default {
   }
   &-text {
     font-size: 30px;
-    line-height: 46px;
+    line-height: 36px;
   }
 }
 </style>

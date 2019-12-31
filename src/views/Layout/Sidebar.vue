@@ -64,12 +64,12 @@ export default {
         {
           icon: "el-icon-grape",
           index: "table",
-          title: "houfei我儿"
+          title: "HF son"
         },
         {
           icon: "el-icon-milk-tea",
           index: "3",
-          title: "houfei我孙",
+          title: "HF son",
           subs: [
             {
               index: "form",
@@ -97,13 +97,13 @@ export default {
         },
         {
           icon: "el-icon-chicken",
-          index: "table",
-          title: "houfei我儿"
+          index: "4",
+          title: "HF son"
         },
         {
           icon: "el-icon-sugar",
-          index: "table",
-          title: "houfei我儿"
+          index: "5",
+          title: "HF son"
         }
       ]
     };
