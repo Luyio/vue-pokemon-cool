@@ -3,7 +3,4 @@
 ##### Refer to the vue-element-admin/vue-manage-system
                     (*´▽｀)ノノ
 
-```
-** ** 12, 12345, 1234567, 123, 123
-```
-
+HF is our son son son 
