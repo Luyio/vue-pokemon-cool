@@ -1,0 +1,10 @@
+{
+    "code": 200,
+    "msg": "已登录",
+    "data": [{
+        "user_name": "yige",
+        "application_id": 25,
+        "app_id": 34,
+        "module_name": "cool"
+    }]
+}

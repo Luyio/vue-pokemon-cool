@@ -3,8 +3,7 @@ import Layout from "../views/Layout"; // 公共的样式
 
 export default function cool() {
   import( /*webpackChunkName: hb.style*/ "@/styles/cool.scss"); // 引入样式
-  // const params = store.getters.app_id + '/cool'; //提取路径变量
-  const params = "/app_id/cool";
+  const params = '/' + store.getters.app_id + '/cool'; //提取路径变量
   return [
     // 桌面
     {

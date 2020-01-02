@@ -58,7 +58,7 @@
                 >HF窝儿</a
               ></el-dropdown-item
             >
-            <el-dropdown-item>侯妃莴笋</el-dropdown-item>
+            <el-dropdown-item>HF莴笋</el-dropdown-item>
             <el-dropdown-item divided command="loginout"
               >退出登录</el-dropdown-item
             >

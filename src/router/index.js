@@ -22,7 +22,7 @@ const index = [{
         name: "Dashboard",
         hidden: true,
         children: [{
-            component: () => import("@/views/dashboard/index"),
+            component: () => import("@/views/dashboard"),
             path: "dashboard",
         }]
     }
