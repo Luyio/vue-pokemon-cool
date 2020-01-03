@@ -40,31 +40,22 @@ router.beforeEach((to, from, next) => {
         next();
     } else {
         checkLogin()
-            .then(function () {
-                    if (to.path === '/login') {
+            .then(routerChanged => {
+                //不许在登陆状态下进登陆页面
+                if (to.path === "/login") {
+                    next({
+                        path: "/"
+                    });
+                    NProgress.done(); // if current page is dashboard will not trigger	afterEach hook, so manually handle it
+                } else {
+                    if (routerChanged)
                         next({
-                            path: '/'
-                        })
-                    } else next()
+                            ...to,
+                            replace: true
+                        });
+                    else next();
                 }
-                // routerChanged => {
-                //     //不许在登陆状态下进登陆页面
-                //     if (to.path === "/login") {
-                //         next({
-                //             path: "/"
-                //         });
-                //         NProgress.done(); // if current page is dashboard will not trigger	afterEach hook, so manually handle it
-                //     } else {
-                //         if (routerChanged)
-                //             next({
-                //                 ...to,
-                //                 replace: true
-                //             });
-                //         else next();
-                //     }
-                // }
-
-            )
+            })
             .catch(
                 //未登陆
                 () => {

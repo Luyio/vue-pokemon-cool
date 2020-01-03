@@ -110,8 +110,10 @@ export default {
     // 下拉菜单
     handleCommand(command) {
       if (command == "loginout") {
-        localStorage.removeItem("ms_username");
-        this.$router.push("/login");
+        localStorage.setItem("is_login", JSON.stringify(false));
+        this.$store.dispatch("LogOut").then(() => {
+          location.reload(); // 为了重新实例化vue-router对象 避免bug
+        });
       }
     },
     // 侧边栏折叠

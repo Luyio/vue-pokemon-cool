@@ -1,5 +1,6 @@
 const path = require("path");
 const test = require('./data/test.json') //本地模拟数据
+const login = require('./data/login.json') //本地模拟数据
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
@@ -42,6 +43,12 @@ module.exports = {
         app.get('/test', (req, res) => {
           res.json(test)
         })
+      // eslint-disable-next-line no-unused-labels
+      http: //localhost:8066/login
+        app.get('/login', (req, res) => {
+          res.json(login)
+        })
+
     }
   },
   chainWebpack: config => {

@@ -86,24 +86,21 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$router.push({ path: "/" });
+          this.loading = true;
+          localStorage.setItem("is_login", JSON.stringify(true));
+          this.$store
+            .dispatch("Login", this.loginForm)
+            .then(() => {
+              this.loading = false;
+              this.$router.push({ path: "/" });
+            })
+            .catch(() => {
+              this.loading = false;
+            });
+        } else {
+          console.log("error submit!");
+          return false;
         }
-        // 权限后面写
-        // if (valid) {
-        //   this.loading = true;
-        //   this.$store
-        //     .dispatch('Login', this.loginForm)
-        //     .then(() => {
-        //       this.loading = false;
-        //       this.$router.push({ path: '/' });
-        //     })
-        //     .catch(() => {
-        //       this.loading = false;
-        //     });
-        // } else {
-        //   console.log('error submit!');
-        //   return false;
-        // }
       });
     },
     start_pass() {
