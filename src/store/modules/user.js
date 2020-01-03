@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
     login,
     logout,
@@ -42,7 +43,7 @@ const user = {
             return new Promise((resolve, reject) => {
                 loginStatus().then(response => {
                     const data = response.data.data[0]
-                    let is_login = JSON.parse(localStorage.getItem("is_login"))
+                    let is_login = JSON.parse(sessionStorage.getItem("is_login"))
                     if (!is_login) {
                         throw new Error()
                     }

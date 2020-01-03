@@ -1,123 +1,102 @@
 <template>
   <div class="sidebar">
     <el-menu
+      mode="vertical"
       class="sidebar-el-menu"
-      :default-active="onRoutes"
+      :default-active="active"
       :collapse="collapse"
       background-color="#324157"
       text-color="#bfcbd9"
       active-text-color="#20a0ff"
     >
-      <!-- router  激活导航时以 index 作为 path 进行路由跳转 -->
-      <template v-for="item in items">
-        <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index">
+      <div class="menu-wrapper">
+        <template v-for="item in routes" v-if="!item.hidden&&item.children">
+          <router-link
+            v-if="hasOneShowingChildren(item.children) && !item.children[0].children&&!item.alwaysShow"
+            :to="item.path+'/'+item.children[0].path"
+            :key="item.children[0].name"
+          >
+            <el-menu-item
+              :index="item.path+'/'+item.children[0].path"
+              :class="{'submenu-title-noDropdown':!isNest}"
+            >
+              <svg-icon
+                v-if="item.children[0].meta&&item.children[0].meta.icon"
+                :icon-class="item.children[0].meta.icon"
+              ></svg-icon>
+              <span
+                v-if="item.children[0].meta&&item.children[0].meta.title"
+                slot="title"
+              >{{item.children[0].meta.title}}</span>
+            </el-menu-item>
+          </router-link>
+
+          <el-submenu v-else :index="item.name||item.path" :key="item.name">
             <template slot="title">
-              <i :class="item.icon"></i>
-              <span slot="title">{{ item.title }}</span>
+              <svg-icon v-if="item.meta&&item.meta.icon" :icon-class="item.meta.icon"></svg-icon>
+              <span v-if="item.meta&&item.meta.title" slot="title">{{item.meta.title}}</span>
             </template>
-            <template v-for="subItem in item.subs">
-              <el-submenu
-                v-if="subItem.subs"
-                :index="subItem.index"
-                :key="subItem.index"
-              >
-                <template slot="title">{{ subItem.title }}</template>
-                <el-menu-item
-                  v-for="(threeItem, i) in subItem.subs"
-                  :key="i"
-                  :index="threeItem.index"
-                  >{{ threeItem.title }}</el-menu-item
-                >
-              </el-submenu>
-              <el-menu-item
-                v-else
-                :index="subItem.index"
-                :key="subItem.index"
-                >{{ subItem.title }}</el-menu-item
-              >
+
+            <template v-for="child in item.children" v-if="!child.hidden">
+              <sidebar-item
+                :is-nest="true"
+                class="nest-menu"
+                v-if="child.children&&child.children.length>0"
+                :routes="[child]"
+                :key="child.path"
+              ></sidebar-item>
+
+              <router-link v-else :to="item.path+'/'+child.path" :key="child.name">
+                <el-menu-item :index="item.path+'/'+child.path">
+                  <svg-icon v-if="child.meta&&child.meta.icon" :icon-class="child.meta.icon"></svg-icon>
+                  <span v-if="child.meta&&child.meta.title" slot="title">{{child.meta.title}}</span>
+                </el-menu-item>
+              </router-link>
             </template>
           </el-submenu>
         </template>
-        <template v-else>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
-          </el-menu-item>
-        </template>
-      </template>
+      </div>
     </el-menu>
   </div>
 </template>
 <script>
-import bus from "./bus";
+import bus from './bus';
 export default {
-  data() {
-    return {
-      collapse: false,
-      items: [
-        {
-          icon: "el-icon-s-home",
-          index: "dashboard",
-          title: "系统首页"
-        },
-        {
-          icon: "el-icon-grape",
-          index: "table",
-          title: "HF son"
-        },
-        {
-          icon: "el-icon-milk-tea",
-          index: "3",
-          title: "HF son",
-          subs: [
-            {
-              index: "form",
-              title: "基本表单"
-            },
-            {
-              index: "3-2",
-              title: "三级菜单",
-              subs: [
-                {
-                  index: "editor",
-                  title: "富文本编辑器"
-                },
-                {
-                  index: "markdown",
-                  title: "markdown编辑器"
-                }
-              ]
-            },
-            {
-              index: "upload",
-              title: "文件上传"
-            }
-          ]
-        },
-        {
-          icon: "el-icon-chicken",
-          index: "4",
-          title: "HF son"
-        },
-        {
-          icon: "el-icon-sugar",
-          index: "5",
-          title: "HF son"
-        }
-      ]
-    };
-  },
-  methods: {},
-  computed: {
-    onRoutes() {
-      return this.$route.path.replace("/", "");
+  props: {
+    isNest: {
+      type: Boolean,
+      default: false
+    },
+    sidebar: {
+      sidebar: JSON
     }
   },
+  data() {
+    return {
+      collapse: false
+    };
+  },
+  methods: {
+    hasOneShowingChildren(children) {
+      const showingChildren = children.filter(item => {
+        return !item.hidden;
+      });
+      if (showingChildren.length === 1) {
+        return true;
+      }
+      return false;
+    }
+  },
+  computed: {
+    routes() {
+      return this.$store.getters.routes.routes;
+    },
+    active() {}
+  },
   created() {
-    bus.$on("collapse", msg => {
+    bus.$on('collapse', msg => {
       this.collapse = msg;
-      bus.$emit("collapse-content", msg);
+      bus.$emit('collapse-content', msg);
     });
   }
 };

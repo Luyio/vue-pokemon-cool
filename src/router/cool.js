@@ -23,10 +23,44 @@ export default function cool() {
             "@/views/cool/main/home"
           ), // Vue-Router + Webpack 路由懒加载实现
         meta: {
-          title: "桌面概况",
-          icon: "basicInformation"
+          title: "系统首页",
+          icon: "documentation"
         }
       }]
-    }
-  ];
+    }, {
+      path: `${params}/form`,
+      component: Layout,
+      name: "cool.form",
+      meta: {
+        title: "表单相关",
+        icon: "documentation"
+      },
+      children: [{
+        path: "basic",
+        name: "form.basic",
+        // hidden:true,
+        component: () =>
+          import(
+            /*webpackChunkName: 'cool.form.basic'*/
+            "@/views/cool/form/basic"
+          ), // Vue-Router + Webpack 路由懒加载实现
+        meta: {
+          title: "基本表单",
+        },
+      }, {
+        path: "markdown",
+        name: "form.markdown",
+        // hidden:true,
+        component: () =>
+          import(
+            /*webpackChunkName: 'cool.form.markdown'*/
+            "@/views/cool/form/markdown"
+          ), // Vue-Router + Webpack 路由懒加载实现
+        meta: {
+          title: "三级菜单",
+        },
+
+      }]
+    },
+  ]
 }

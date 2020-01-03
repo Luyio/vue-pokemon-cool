@@ -29,14 +29,14 @@ module.exports = {
     https: false,
     hotOnly: false,
     /* 使用代理 */
-    // proxy: {
-    //   '/api': {
-    //     /* 目标代理服务器地址 */
-    //     target: 'http://47.100.47.3/',
-    //     /* 允许跨域 */
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      '/api': {
+        /* 目标代理服务器地址 */
+        target: 'http://47.100.47.3/',
+        /* 允许跨域 */
+        changeOrigin: true,
+      },
+    },
     before(app) {
       // eslint-disable-next-line no-unused-labels
       http: //localhost:8066/test
