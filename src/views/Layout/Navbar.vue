@@ -8,7 +8,7 @@
         />
       </span>
     </div>
-    <div class="logo">HF is my sun</div>
+    <div class="logo">Are you a pig</div>
     <div class="header_R">
       <div class="header_user">
         <!-- 全屏 -->
