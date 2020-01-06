@@ -114,8 +114,6 @@ export default {
   },
   computed: {
     routes() {
-      console.log(this.$store.getters.routes.routes);
-
       return this.$store.getters.routes.routes;
     },
     active() {

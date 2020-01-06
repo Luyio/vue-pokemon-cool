@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <span>测试</span>
+    <el-row :gutter="15"> </el-row>
   </div>
 </template>
 <script>
@@ -13,4 +13,8 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-wrapper {
+  padding: 0;
+}
+</style>
