@@ -24,7 +24,7 @@ export default function cool() {
           ), // Vue-Router + Webpack 路由懒加载实现
         meta: {
           title: "系统首页",
-          icon: "documentation"
+          icon: "bug"
         }
       }]
     }, {
