@@ -85,6 +85,8 @@ export default {
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
+        console.log(1);
+
         if (valid) {
           this.loading = true;
           sessionStorage.setItem("is_login", JSON.stringify(true));
