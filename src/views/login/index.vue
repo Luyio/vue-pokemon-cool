@@ -62,56 +62,54 @@
 // import Vue from 'vue';
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
       loginForm: {
-        username: "皮卡丘",
-        password: "111111"
+        username: '皮卡丘',
+        password: '111111',
       },
       loginRules: {},
-      pwdType: "password",
+      pwdType: 'password',
       loading: false,
-      rotate_pass: ""
+      rotate_pass: '',
     };
   },
   methods: {
     showPwd() {
-      if (this.pwdType === "password") {
-        this.pwdType = "";
+      if (this.pwdType === 'password') {
+        this.pwdType = '';
       } else {
-        this.pwdType = "password";
+        this.pwdType = 'password';
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
-        console.log(1);
-
         if (valid) {
           this.loading = true;
-          sessionStorage.setItem("is_login", JSON.stringify(true));
+          sessionStorage.setItem('is_login', JSON.stringify(true));
           this.$store
-            .dispatch("Login", this.loginForm)
+            .dispatch('Login', this.loginForm)
             .then(() => {
               this.loading = false;
-              this.$router.push({ path: "/" });
+              this.$router.push({ path: '/' });
             })
             .catch(() => {
               this.loading = false;
             });
         } else {
-          console.log("error submit!");
+          console.log('error submit!');
           return false;
         }
       });
     },
     start_pass() {
-      this.rotate_pass = "rotate";
+      this.rotate_pass = 'rotate';
     },
     end_pass() {
-      this.rotate_pass = "";
-    }
-  }
+      this.rotate_pass = '';
+    },
+  },
 };
 </script>
 
@@ -176,8 +174,8 @@ $deep: #e3350d;
   width: 100%;
   background-color: rgb(26, 22, 45);
   // background: url('../../assets/ball.png');
-  background-size: "cover";
-  background-repeat: "no-repeat";
+  background-size: 'cover';
+  background-repeat: 'no-repeat';
   opacity: 0.85;
   .login-form {
     position: absolute;

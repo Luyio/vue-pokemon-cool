@@ -13,15 +13,15 @@ export default {
     // ...mapGetters(["name", "roles"])
   },
   created() {
-    switch (this.$store.getters.module_name) {
-      case "cool": // 是该项目页面的话重定向到改项目
-        this.$router.push({
-          path: `/${this.$store.getters.app_id}/cool/main`
-        });
-        break;
-      default:
-        break;
-    }
+    // switch (this.$store.getters.module_name) {
+    //   case "cool": // 是该项目页面的话重定向到改项目
+    //     this.$router.push({
+    //       path: `/${this.$store.getters.app_id}/cool/main`
+    //     });
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 };
 </script>

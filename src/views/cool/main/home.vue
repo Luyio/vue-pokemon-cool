@@ -6,11 +6,11 @@
 <script>
 export default {
   components: {},
-  name: "HelloWorld",
+  name: 'HelloWorld',
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
