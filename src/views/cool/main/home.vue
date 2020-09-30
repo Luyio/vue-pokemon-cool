@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <el-row :gutter="15"> </el-row>
+    <el-row :gutter="15">main</el-row>
   </div>
 </template>
 <script>

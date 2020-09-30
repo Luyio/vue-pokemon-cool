@@ -8,7 +8,7 @@
         />
       </span>
     </div>
-    <div class="logo">Are you a pig</div>
+    <div class="logo">口袋图鉴</div>
     <div class="header_R">
       <div class="header_user">
         <!-- 全屏 -->
@@ -55,10 +55,10 @@
               ><a
                 href="https://github.com/Luyio/vue-pokemon-cool"
                 target="_blank"
-                >HF窝儿</a
+                >github</a
               ></el-dropdown-item
             >
-            <el-dropdown-item>HF莴笋</el-dropdown-item>
+            <el-dropdown-item><a href="https://www.baidu.com/" target="_blank">帮助</a></el-dropdown-item>
             <el-dropdown-item divided command="loginout"
               >退出登录</el-dropdown-item
             >
@@ -77,7 +77,7 @@ export default {
       collapse: false,
       fullscreen: false,
       message: 999,
-      name: "Y baba"
+      name: 'PPy'
     };
   },
   methods: {
