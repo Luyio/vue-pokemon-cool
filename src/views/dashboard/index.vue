@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">HF真的狗呀🐩</div>
+    <div class="dashboard-text">中间页</div>
   </div>
 </template>
 
