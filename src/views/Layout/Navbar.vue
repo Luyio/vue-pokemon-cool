@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div @click="collapseChage()" class="collapse-btn">
+    <div class="collapse-btn" @click="collapseChage()">
       <span class="'svg-Navbar' ">
         <svg-icon
           icon-class="pokemonball"
@@ -8,7 +8,9 @@
         />
       </span>
     </div>
-    <div class="logo">口袋图鉴</div>
+    <div class="logo">
+      精灵宝可梦
+    </div>
     <div class="header_R">
       <div class="header_user">
         <!-- 全屏 -->
@@ -19,11 +21,11 @@
             placement="bottom"
           >
             <span class="svg-Navbar">
-              <svg-icon v-if="!fullscreen" icon-class="screen"></svg-icon>
+              <svg-icon v-if="!fullscreen" icon-class="screen" />
               <svg-icon
                 v-if="fullscreen"
                 icon-class="exit-fullscreen"
-              ></svg-icon>
+              />
             </span>
           </el-tooltip>
         </div>
@@ -35,33 +37,35 @@
             placement="bottom"
           >
             <span class="svg-Navbar">
-              <svg-icon icon-class="icons8-pokemon"></svg-icon>
+              <svg-icon icon-class="icons8-pokemon" />
             </span>
           </el-tooltip>
-          <span class="has_news" v-if="message"></span>
+          <span v-if="message" class="has_news" />
         </div>
         <!-- 头像 -->
         <div class="user-avator">
-          <img src="../../assets/timg.jpeg" />
+          <img src="../../assets/timg.jpeg">
         </div>
         <!-- 用户名 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             {{ name }}
-            <i class="el-icon-caret-bottom"></i>
+            <i class="el-icon-caret-bottom" />
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item
-              ><a
+            <el-dropdown-item>
+              <a
                 href="https://github.com/Luyio/vue-pokemon-cool"
                 target="_blank"
-                >github</a
-              ></el-dropdown-item
-            >
+              >github</a>
+            </el-dropdown-item>
             <el-dropdown-item><a href="https://www.baidu.com/" target="_blank">帮助</a></el-dropdown-item>
-            <el-dropdown-item divided command="loginout"
-              >退出登录</el-dropdown-item
+            <el-dropdown-item
+              divided
+              command="loginout"
             >
+              退出登录
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -69,7 +73,7 @@
   </div>
 </template>
 <script>
-import bus from "./bus";
+import bus from './bus'
 export default {
   components: {},
   data() {
@@ -78,51 +82,51 @@ export default {
       fullscreen: false,
       message: 999,
       name: 'PPy'
-    };
+    }
   },
   methods: {
     collapseChange() {
-      let element = document.documentElement;
+      const element = document.documentElement
       if (this.fullscreen) {
         if (document.exitFullscreen) {
-          document.exitFullscreen();
+          document.exitFullscreen()
         } else if (document.webkitCancelFullScreen) {
-          document.webkitCancelFullScreen();
+          document.webkitCancelFullScreen()
         } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
+          document.mozCancelFullScreen()
         } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
+          document.msExitFullscreen()
         }
       } else {
         if (element.requestFullscreen) {
-          element.requestFullscreen();
+          element.requestFullscreen()
         } else if (element.webkitRequestFullScreen) {
-          element.webkitRequestFullScreen();
+          element.webkitRequestFullScreen()
         } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
+          element.mozRequestFullScreen()
         } else if (element.msRequestFullscreen) {
           // IE11
-          element.msRequestFullscreen();
+          element.msRequestFullscreen()
         }
       }
-      this.fullscreen = !this.fullscreen;
+      this.fullscreen = !this.fullscreen
     },
     // 下拉菜单
     handleCommand(command) {
-      if (command == "loginout") {
-        sessionStorage.setItem("is_login", JSON.stringify(false));
-        this.$store.dispatch("LogOut").then(() => {
-          location.reload(); // 为了重新实例化vue-router对象 避免bug
-        });
+      if (command == 'loginout') {
+        sessionStorage.setItem('is_login', JSON.stringify(false))
+        this.$store.dispatch('LogOut').then(() => {
+          location.reload() // 为了重新实例化vue-router对象 避免bug
+        })
       }
     },
     // 侧边栏折叠
     collapseChage() {
-      this.collapse = !this.collapse;
-      bus.$emit("collapse", this.collapse);
+      this.collapse = !this.collapse
+      bus.$emit('collapse', this.collapse)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .header {
