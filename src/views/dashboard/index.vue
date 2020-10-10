@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">HF真的狗呀🐩</div>
+    <div class="dashboard-text">中间页</div>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     switch (this.$store.getters.module_name) {
       case "cool": // 是该项目页面的话重定向到改项目
         this.$router.push({
-          path: `/${this.$store.getters.app_id}/cool/main`
+          path: `/${this.$store.getters.app_id}/cool/main/home`
         });
         break;
       default:

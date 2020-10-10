@@ -23,7 +23,7 @@ export default function cool() {
             "@/views/cool/main/home"
           ), // Vue-Router + Webpack 路由懒加载实现
         meta: {
-          title: "系统首页",
+          title: "口袋首页",
           icon: "bug"
         }
       }]
@@ -32,7 +32,7 @@ export default function cool() {
       component: Layout,
       name: "cool.form",
       meta: {
-        title: "表单相关",
+        title: "口袋相关",
         icon: "documentation"
       },
       children: [{
@@ -45,7 +45,7 @@ export default function cool() {
             "@/views/cool/form/basic"
           ), // Vue-Router + Webpack 路由懒加载实现
         meta: {
-          title: "基本表单",
+          title: "1",
         },
       }, {
         path: "markdown",
@@ -57,7 +57,7 @@ export default function cool() {
             "@/views/cool/form/markdown"
           ), // Vue-Router + Webpack 路由懒加载实现
         meta: {
-          title: "三级菜单",
+          title: "2",
         },
 
       }]
