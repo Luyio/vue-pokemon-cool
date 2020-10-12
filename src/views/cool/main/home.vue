@@ -4,9 +4,11 @@
       <el-row type="flex">
         <el-col class="col1">
           <el-scrollbar style="height: 100%;">
-            <div style="height: 500px;width: 100%;background: red;" />
-            <div style="height: 500px;width: 100%;background: yellowgreen;" />
-            <div style="height: 500px;width: 100%;background: blueviolet;" />
+            <li v-for="item in new Array(16)" :key="item">
+              <div class="avatar">
+                <img src="../../../assets/logo.png" alt="">
+              </div>
+            </li>
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
@@ -34,11 +36,25 @@ export default {
     height: 100%;
   }
   .col1 {
-    width: 160px;
-    background-color: teal;
+    padding-top: 40px;
+    width: 240px;
   }
   .col2 {
     background-color: rgb(218, 170, 162);
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0px auto;
+    margin-bottom: 80px;
+    background-color: green;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 </style>

@@ -37,4 +37,8 @@ export default {
   methods: {}
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// .content {
+//   background-color: #000;
+// }
+</style>
