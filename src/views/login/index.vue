@@ -1,12 +1,12 @@
 <template>
   <div class="login-container">
-    <canvas id="c" style="position: absolute;"></canvas>
+    <canvas id="c" style="position: absolute;" />
     <el-form
+      ref="loginForm"
       class="login-form"
       autocomplete="on"
       :model="loginForm"
       :rules="loginRules"
-      ref="loginForm"
       label-position="left"
     >
       <h3 class="title animated pulse infinite">
@@ -17,28 +17,28 @@
           <svg-icon icon-class="icons8-pokemon" />
         </span>
         <el-input
+          v-model="loginForm.username"
           name="username"
           type="text"
-          v-model="loginForm.username"
           autocomplete="on"
           placeholder="请输入帐号"
         />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container svg-container_login">
-          <svg-icon :class="rotate_pass" icon-class="Pokemon"></svg-icon>
+          <svg-icon :class="rotate_pass" icon-class="Pokemon" />
         </span>
         <el-input
+          v-model="loginForm.password"
           name="password"
           :type="pwdType"
-          @keyup.enter.native="handleLogin"
-          v-model="loginForm.password"
           autocomplete="on"
           placeholder="请输入密码"
+          @keyup.enter.native="handleLogin"
           @focus="start_pass()"
           @blur="end_pass()"
-        ></el-input>
-        <span @click="showPwd" class="show-pwd">
+        />
+        <span class="show-pwd" @click="showPwd">
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
@@ -49,8 +49,9 @@
           style="width:100%;"
           :loading="loading"
           @click.native.prevent="handleLogin"
-          >Go ~</el-button
         >
+          Go ~
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -63,18 +64,18 @@
 // import Vue from 'vue';
 
 export default {
-  name: 'login',
+  name: 'Login',
   data() {
     return {
       loginForm: {
         username: '皮卡丘',
-        password: '111111',
+        password: '111111'
       },
       loginRules: {},
       pwdType: 'password',
       loading: false,
-      rotate_pass: '',
-    };
+      rotate_pass: ''
+    }
   },
   mounted() {
     this.setCanvas()
@@ -82,77 +83,74 @@ export default {
   methods: {
     showPwd() {
       if (this.pwdType === 'password') {
-        this.pwdType = '';
+        this.pwdType = ''
       } else {
-        this.pwdType = 'password';
+        this.pwdType = 'password'
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true;
-          sessionStorage.setItem('is_login', JSON.stringify(true));
+          this.loading = true
+          sessionStorage.setItem('is_login', JSON.stringify(true))
           this.$store
             .dispatch('Login', this.loginForm)
             .then(() => {
-              this.loading = false;
-              this.$router.push({ path: '/' });
+              this.loading = false
+              this.$router.push({ path: '/' })
             })
             .catch(() => {
-              this.loading = false;
-            });
+              this.loading = false
+            })
         } else {
-          console.log('error submit!');
-          return false;
+          console.log('error submit!')
+          return false
         }
-      });
+      })
     },
     start_pass() {
-      this.rotate_pass = 'rotate';
+      this.rotate_pass = 'rotate'
     },
     end_pass() {
-      this.rotate_pass = '';
+      this.rotate_pass = ''
     },
     setCanvas() {
-        var c = document.getElementById("c");  //拿到画布并赋值给c
-        var ctx = c.getContext("2d");     //创建画笔,2d的
- 
-        c.height = window.innerHeight;  //获取屏幕分辨率:高
-        c.width = window.innerWidth;    //宽
-        var chinese = "欢迎来到宝可梦世界";
-        chinese = chinese.split("");   //split() 方法用于把一个字符串分割成字符串数组。
- 
-        var font_size = 26;   //字体大小
-        var columns = Math.floor(c.width/font_size);  //屏幕大小除以字体大小=字体个数;向下取整
-        //an array of drops - one per column
-        var drops = [];  //创建一个数组
-        for(var x = 0; x < columns; x++)
-        drops[x] = 1; 
-        //drawing the characters
-        function draw()
-        {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";//rgba:基础三色加不透明度
-        ctx.fillRect(0, 0, c.width, c.height);
- 
-        ctx.fillStyle = "#009999"; //green text
-        ctx.font = font_size + "px arial";
-        //looping over drops
-        for(var i = 0; i < drops.length; i++)
-        {
-        var text = chinese[Math.floor(Math.random()*chinese.length)];
-        ctx.fillText(text, i*font_size, drops[i]*font_size);
- 
-        if(drops[i]*font_size > c.height && Math.random() > 0.975) //越接近一表示一起下落的可能性越低
- 
-                drops[i] = 0;
-                 
-                drops[i]++;
+      const c = document.getElementById('c') // 拿到画布并赋值给c
+      const ctx = c.getContext('2d') // 创建画笔,2d的
+
+      c.height = window.innerHeight // 获取屏幕分辨率:高
+      c.width = window.innerWidth // 宽
+      let chinese = '欢迎来到宝可梦世界'
+      chinese = chinese.split('') // split() 方法用于把一个字符串分割成字符串数组。
+
+      const font_size = 26 // 字体大小
+      const columns = Math.floor(c.width / font_size) // 屏幕大小除以字体大小=字体个数;向下取整
+      // an array of drops - one per column
+      const drops = [] // 创建一个数组
+      for (let x = 0; x < columns; x++) { drops[x] = 1 }
+      // drawing the characters
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'// rgba:基础三色加不透明度
+        ctx.fillRect(0, 0, c.width, c.height)
+
+        ctx.fillStyle = '#009999' // green text
+        ctx.font = font_size + 'px arial'
+        // looping over drops
+        for (let i = 0; i < drops.length; i++) {
+          const text = chinese[Math.floor(Math.random() * chinese.length)]
+          ctx.fillText(text, i * font_size, drops[i] * font_size)
+
+          if (drops[i] * font_size > c.height && Math.random() > 0.975) // 越接近一表示一起下落的可能性越低
+
+          { drops[i] = 0 }
+
+          drops[i]++
         }
-        }
-        setInterval(draw, 80);//时间间隔
-      },
+      }
+      setInterval(draw, 80)// 时间间隔
     }
-};
+  }
+}
 </script>
 
 <style lang="scss">
