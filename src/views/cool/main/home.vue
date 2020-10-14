@@ -7,13 +7,18 @@
             <li v-for="item in new Array(16)" :key="item" class="item">
               <div class="avatar">
                 <div class="bg" />
-                <img class="circle" src="../../../assets/logo.png" alt="">
+                <img class="circle" src="~assets/logo.png" alt="">
               </div>
             </li>
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          2
+          <el-card>
+            <img src="~assets/avatar/小智.png" alt="">
+            <div>
+              <span>小智</span>
+            </div>
+          </el-card>
         </el-col>
       </el-row>
     </el-main>
