@@ -13,7 +13,7 @@
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          <el-card>
+          <el-card shadow="always">
             <img src="~assets/avatar/小智.png" alt="">
             <div>
               <span>小智</span>
