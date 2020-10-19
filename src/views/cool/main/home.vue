@@ -4,7 +4,7 @@
       <el-row type="flex">
         <el-col class="col1">
           <el-scrollbar style="height: 100%;">
-            <li v-for="(item,index) in new Array(16)" :key="index" class="item" @click="active = index">
+            <li v-for="(item,index) in userList" :key="index" class="item" @click="active = index">
               <div class="avatar">
                 <div class="bg" :class="{'active' : active == index}" />
                 <img class="circle" src="~assets/logo.png" alt="">
@@ -13,10 +13,10 @@
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          <el-card v-for="(item,index) in new Array(16)" v-if="active == index" :key="index" shadow="always">
-            <img src="~assets/avatar/小智.png" alt="">
+          <el-card shadow="always">
+            <img :src="userList[0].img" alt="">
             <div>
-              <span>小智</span>
+              <span>{{ userList[0].name }}</span>
             </div>
           </el-card>
         </el-col>
@@ -25,14 +25,25 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   components: {},
   data() {
     return {
+      userList:[],
       active: 0
     }
   },
-  methods: {}
+  created() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      axios.get('/user').then(res => {
+        this.userList = res.data.data
+      }).catch(err => console.log(err))
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 const path = require('path')
 const test = require('./data/test.json') // 本地模拟数据
 const login = require('./data/login.json') // 本地模拟数据
+const user = require('./data/user.json') // 本地模拟数据
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -45,6 +46,10 @@ module.exports = {
       http: // localhost:8066/login
       app.get('/login', (req, res) => {
         res.json(login)
+      })
+      http: // localhost:8066/login
+      app.get('/user', (req, res) => {
+        res.json(user)
       })
     }
   },
