@@ -32,7 +32,7 @@ export default function cool() {
       component: Layout,
       name: 'cool.form',
       meta: {
-        title: '口袋相关',
+        title: '口袋百宝箱',
         icon: 'documentation'
       },
       children: [{

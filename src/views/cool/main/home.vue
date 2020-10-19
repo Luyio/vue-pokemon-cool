@@ -4,16 +4,16 @@
       <el-row type="flex">
         <el-col class="col1">
           <el-scrollbar style="height: 100%;">
-            <li v-for="item in new Array(16)" :key="item" class="item">
+            <li v-for="(item,index) in new Array(16)" :key="index" class="item" @click="active = index">
               <div class="avatar">
-                <div class="bg" />
+                <div class="bg" :class="{'active' : active == index}" />
                 <img class="circle" src="~assets/logo.png" alt="">
               </div>
             </li>
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          <el-card shadow="always">
+          <el-card v-for="(item,index) in new Array(16)" :key="index" shadow="always" v-if="active == index">
             <img src="~assets/avatar/小智.png" alt="">
             <div>
               <span>小智</span>
@@ -28,7 +28,9 @@
 export default {
   components: {},
   data() {
-    return {}
+    return {
+      active: 0
+    }
   },
   methods: {}
 }
@@ -67,7 +69,9 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        animation: pulse 5s infinite;
+        &.active {
+          animation: pulse 5s infinite;
+        }
     }
     @keyframes pulse {
         0% {
