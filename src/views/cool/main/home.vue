@@ -13,7 +13,7 @@
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          <el-card v-for="(item,index) in new Array(16)" :key="index" shadow="always" v-if="active == index">
+          <el-card v-for="(item,index) in new Array(16)" v-if="active == index" :key="index" shadow="always">
             <img src="~assets/avatar/小智.png" alt="">
             <div>
               <span>小智</span>

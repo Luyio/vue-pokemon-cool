@@ -7,10 +7,10 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {}
   },
   methods: {}
-};
+}
 </script>
 <style lang='scss' scoped>
 </style>
