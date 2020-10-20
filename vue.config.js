@@ -47,7 +47,7 @@ module.exports = {
       app.get('/login', (req, res) => {
         res.json(login)
       })
-      http: // localhost:8066/login
+      http: // localhost:8066/user
       app.get('/user', (req, res) => {
         res.json(user)
       })

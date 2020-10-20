@@ -13,10 +13,10 @@
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          <el-card shadow="always">
-            <img :src="userList[0].img" alt="">
+          <el-card v-if="userList[active]" shadow="always">
+            <img :src="`${publicPath + userList[active].img}`" alt="">
             <div>
-              <span>{{ userList[0].name }}</span>
+              <span>{{ userList[active].name }}</span>
             </div>
           </el-card>
         </el-col>
@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       userList:[],
-      active: 0
+      active: 0,
+      publicPath: process.env.BASE_URL
     }
   },
   created() {
@@ -41,7 +42,7 @@ export default {
     getData() {
       axios.get('/user').then(res => {
         this.userList = res.data.data
-      }).catch(err => console.log(err))
+      })
     }
   }
 }
@@ -55,7 +56,7 @@ export default {
     height: 100%;
   }
   .col1 {
-    width: 240px;
+    max-width: 240px;
   }
   .col2 {
     background-color: rgb(218, 170, 162);

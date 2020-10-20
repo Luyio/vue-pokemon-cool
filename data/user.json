@@ -2,8 +2,16 @@
   "code": 200,
   "msg": "操作成功",
   "data": [{
-      "img": "~assets/avatar/小智.png",
+      "img": "/avatar/小智.png",
       "name": "小智",
-      "text": "sdasdasdadaadsadsa"
-  }]
+      "text": "我是小智我是小智我是小智我是小智我是小智"
+  },{
+    "img": "/avatar/小智.png",
+    "name": "小霞",
+    "text": "我是小霞我是小霞我是小霞我是小霞我是小霞"
+},{
+  "img": "/avatar/小智.png",
+  "name": "小刚",
+  "text": "我是小刚我是小刚我是小刚我是小刚我是小刚"
+}]
 }
