@@ -1,6 +1,7 @@
 const path = require('path')
 const test = require('./data/test.json') // 本地模拟数据
 const login = require('./data/login.json') // 本地模拟数据
+const user = require('./data/user.json') // 本地模拟数据
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -46,9 +47,18 @@ module.exports = {
       app.get('/login', (req, res) => {
         res.json(login)
       })
+      http: // localhost:8066/user
+      app.get('/user', (req, res) => {
+        res.json(user)
+      })
     }
   },
   chainWebpack: config => {
+    config.resolve.alias
+      .set('@', resolve('./src'))
+      .set('components', resolve('./src/components'))
+      .set('assets', resolve('./src/assets'))
+      .set('views', resolve('./src/views'))
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
@@ -62,6 +72,14 @@ module.exports = {
       .loader('svg-sprite-loader')
       .options({
         symbolId: 'icon-[name]'
+      })
+    config.module
+      .rule('eslint')
+      .use('eslint-loader')
+      .loader('eslint-loader')
+      .tap(options => {
+        options.fix = true
+        return options
       })
   },
   configureWebpack: {}

@@ -1,32 +1,32 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 /* Layout */
-import Layout from "../views/Layout";
+import Layout from '../views/Layout'
 
 const index = [{
-  path: "/login",
-  component: () => import("@/views/login/index"),
+  path: '/login',
+  component: () => import('@/views/login/index'),
   hidden: true
 },
 {
-  path: "/404",
-  component: () => import("@/views/404"),
+  path: '/404',
+  component: () => import('@/views/404'),
   hidden: true
 },
 {
-  path: "/",
+  path: '/',
   component: Layout,
-  redirect: "/dashboard",
-  name: "Dashboard",
+  redirect: '/dashboard',
+  name: 'Dashboard',
   hidden: true,
   children: [{
-    component: () => import("@/views/dashboard"),
-    path: "dashboard"
+    component: () => import('@/views/dashboard'),
+    path: 'dashboard'
   }]
 }
-];
+]
 
 export default new Router({
   // mode: 'history', //后端支持可开
@@ -34,4 +34,4 @@ export default new Router({
     y: 0
   }),
   routes: index
-});
+})

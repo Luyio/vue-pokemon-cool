@@ -5,6 +5,6 @@ const getters = {
   app_id: state => state.user.data.app_id,
   is_login: state => state.user.is_login
 
-};
+}
 
-export default getters;
+export default getters

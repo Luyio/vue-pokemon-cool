@@ -4,28 +4,47 @@
       <el-row type="flex">
         <el-col class="col1">
           <el-scrollbar style="height: 100%;">
-            <li v-for="item in new Array(16)" :key="item" class="item">
+            <li v-for="(item,index) in userList" :key="index" class="item" @click="active = index">
               <div class="avatar">
-                <div class="bg" />
-                <img class="circle" src="../../../assets/logo.png" alt="">
+                <div class="bg" :class="{'active' : active == index}" />
+                <img class="circle" src="~assets/logo.png" alt="">
               </div>
             </li>
           </el-scrollbar>
         </el-col>
         <el-col class="col2">
-          2
+          <el-card v-if="userList[active]" shadow="always">
+            <img :src="`${publicPath + userList[active].img}`" alt="">
+            <div>
+              <span>{{ userList[active].name }}</span>
+            </div>
+          </el-card>
         </el-col>
       </el-row>
     </el-main>
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   components: {},
   data() {
-    return {}
+    return {
+      userList:[],
+      active: 0,
+      publicPath: process.env.BASE_URL
+    }
   },
-  methods: {}
+  created() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      axios.get('/user').then(res => {
+        this.userList = res.data.data
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -37,7 +56,7 @@ export default {
     height: 100%;
   }
   .col1 {
-    width: 240px;
+    max-width: 240px;
   }
   .col2 {
     background-color: rgb(218, 170, 162);
@@ -62,7 +81,9 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        animation: pulse 5s infinite;
+        &.active {
+          animation: pulse 5s infinite;
+        }
     }
     @keyframes pulse {
         0% {
