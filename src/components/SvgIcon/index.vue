@@ -6,16 +6,16 @@
 
 <script>
 export default {
-  name: 'svg-icon',
+  name: 'SvgIcon',
   props: {
     iconClass: {
       type: String,
-      required: true,
+      required: true
     },
     className: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   computed: {
     iconName() {
@@ -27,8 +27,8 @@ export default {
       } else {
         return 'svg-icon';
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
